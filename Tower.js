@@ -1,8 +1,12 @@
 Tower = Class.create(Sprite, {
    initialize: function() {
       Sprite.call(this, gridPx, gridPx);
-   }
+   },
 
+   ontouchend: function() {
+      this.scene.map.collisionData[this.xCoord][this.yCoord] = 0;
+      this.scene.removeChild(this);
+   }
 });
 
 // REPEAT FOR OTHER TOWER TYPES

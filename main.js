@@ -18,8 +18,10 @@ window.onload = function() {
       ];
       var grid = new Grid(map1);
       var tower = new GunTower();
-      game.rootScene.addChild(grid);
+      stage = new Stage(grid);
+      // game.rootScene.addChild(grid);
       grid.addTower(0, 1, tower);
+      game.pushScene(stage);
    };
 
    game.start();
