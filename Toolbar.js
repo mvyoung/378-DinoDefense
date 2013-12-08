@@ -20,6 +20,14 @@ Remove = Class.create(Sprite, {
       this.x = x;
       this.y = y;
       this.image = game.assets['images/remove.png'];
+   },
+
+   ontouchend: function() {
+      if (remove === 1) {
+         remove = 0;
+      } else if (remove === 0) {
+         remove = 1;
+      }
    }
 });
 

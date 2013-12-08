@@ -30,7 +30,11 @@ Grid = Class.create(Map, {
             console.log("TOWER CAN BE ADDED");
          }
       } else {
-         console.log("CANNOT ADD TO THIS GRIDSPACE");
+         if (selection > 0) {
+            console.log("CANNOT ADD TO THIS GRIDSPACE");
+         } else {
+            console.log("NO TOWER SELECTED");
+         }
       }
    },
 
@@ -41,6 +45,7 @@ Grid = Class.create(Map, {
       tower.yGrid = y;
       this.collisionData[x][y] = 1;
       this.scene.addChild(tower);
+      selection = 0;
       console.log("TOWER ADDED");
    }
 

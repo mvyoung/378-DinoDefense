@@ -4,8 +4,11 @@ Tower = Class.create(Sprite, {
    },
 
    ontouchend: function() {
-      this.scene.map.collisionData[this.xGrid][this.yGrid] = 0;
-      this.scene.removeChild(this);
+      if (remove === 1) {
+         this.scene.map.collisionData[this.xGrid][this.yGrid] = 0;
+         this.scene.removeChild(this);
+         remove = 0;
+      }
    }
 });
 

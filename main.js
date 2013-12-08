@@ -6,6 +6,8 @@ this.gridPx = 40;
 // which tower is currently selected to build (0 is no tower selected)
 this.selection = 0;
 
+this.remove = 0;
+
 this.money = 50;
 
 // converts pixel coordinates to grid coordinates
@@ -60,7 +62,6 @@ window.onload = function() {
       var grid = new Grid(map1);
       var tower = new GunTower();
       var stage = new Stage(grid);
-      grid.addTower(0, 1, tower);
       game.pushScene(stage);
    };
 
