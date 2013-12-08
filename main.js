@@ -29,7 +29,7 @@ GridToPx = function(num) {
 window.onload = function() {
    // with gridPx of 40, [20][20] tiles (800x600)
    // because toolbar takes up 200x800
-   game = new Game(1000, 800);
+   game = new Game(800, 1000);
 
    game.preload(
       'images/grid.png',
