@@ -10,15 +10,13 @@ Stage = Class.create(Scene, {
    },
    
    onenterframe: function() {
-	   if (this.age % 200 === 0) {
+	   if (this.age == 10) {
            for (i = 0; i < 1; i++) {
-		      var d = new Enemy(-40, 9 * gridPx, 0);
+		      var d = new Enemy(-1, 9, 0);
               d.key = i;
 		      //this.addChild(d);
-			 
+			  enemies[i] = d;
 		   }
-
-
        }	   
 	}
 });
