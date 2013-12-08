@@ -7,5 +7,19 @@ Stage = Class.create(Scene, {
       this.map = map;
       this.addChild(map);
       this.addChild(toolbar);
-   }
+   },
+   
+   onenterframe: function() {
+	   if (this.age % 200 === 0) {
+           for (i = 0; i < 1; i++) {
+		      var d = new Enemy(40, 200 + (i *50), 0); 
+		      this.addChild(d);
+			  enemies[enemies.length] = d;
+		   }
+
+
+       }	   
+	
+	
+	},
 });
