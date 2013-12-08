@@ -7,6 +7,7 @@ Enemy = Class.create(Sprite, // extend the sprite class
         this.moveSpeed = 5;
                 this.health = 1;
                 this.isSlowed = false;
+                this.healthBar = new Health(x + 5, y - 10);
                 
                 
         this.x = x;
@@ -34,8 +35,10 @@ Enemy = Class.create(Sprite, // extend the sprite class
 		 if (this.age % 4 == 0) {
 			  if (this.isSlowed) {
                         this.x += this.moveSpeed/2;
+                        this.healthBar.x += this.moveSpeed/2;
                 } else {
                         this.x += this.moveSpeed;
+                        this.healthBar.x += this.moveSpeed;
                 }
 		  }
         
@@ -45,17 +48,18 @@ Enemy = Class.create(Sprite, // extend the sprite class
     },
 });
 
-Health = Class.create( {
-    
+Health = Class.create(Sprite, {
+    initialize: function(x, y) {
+      Sprite.call(this, 30, 5);
+      this.x = x;
+      this.y = y;
+      this.image = game.assets['images/health_green.png'];
+      game.currentScene.addChild(this);
+    },
+
+    onenterframe: function() {
+      if (this.width < 10) {
+        this.image = game.assets['images/health_red.png'];
+      }
+    }
 });
-
-initHealth = function() {
-   healthLabel = new Label("");
-   healthLabel.textAlign = "right";
-   healthLabel.color = 'white';
-   healthLabel.addEventListener('enterframe', function() {
-      healthLabel.text = "Health: " + player.health;
-   });
-
-   return healthLabel;
-};
