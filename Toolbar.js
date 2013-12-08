@@ -7,9 +7,11 @@ Toolbar = Class.create(Sprite, {
    },
 
    onaddedtoscene: function() {
-      var tower1 = new Tower1(this.x + 20, this.y + 50);
-      var remove = new Remove(this.x + 20, this.y + 400);
-      var moneyAmount = new Money(this.x + 20, this.y + 200);
+      var tower1 = new Tower1(this.x + 20, this.y + 100);
+      var remove = new Remove(this.x + 20, this.y + 700);
+      var citizenCount = new Citizens(this.x + 20, this.y + 20);
+      var moneyAmount = new Money(this.x + 20, this.y + 50);
+      this.scene.addChild(citizenCount);
       this.scene.addChild(moneyAmount);
       this.scene.addChild(remove);
       this.scene.addChild(tower1);
@@ -21,7 +23,7 @@ Money = Class.create(Label, {
       Label.call(this, 150, 50);
       this.x = x;
       this.y = y;
-      this.text = "Money: " + money;
+      this.text = "Money : " + money;
       this.font = '30px normal';
    },
 
@@ -31,7 +33,24 @@ Money = Class.create(Label, {
       } else {
          this.color = '#000000';
       }
-      this.text = "Money: " + money;
+      this.text = "Money : " + money;
+   }
+});
+
+Citizens = Class.create(Label, {
+   initialize: function(x, y) {
+      Label.call(this, 150, 50);
+      this.x = x;
+      this.y = y;
+      this.text = "Citizens: " + citizens;
+      this.font = '30px normal';
+   },
+
+   onenterframe: function() {
+      this.text = "Citizens: " + citizens;
+      if (citizens === 0) {
+         console.log("GAMEOVER");
+      }
    }
 });
 

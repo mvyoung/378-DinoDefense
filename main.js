@@ -9,6 +9,9 @@ this.selection = 0;
 // boolean value for removing towers
 this.remove = 0;
 
+// don't let them die
+this.citizens = 20;
+
 // $$
 this.money = 50;
 var enemies = new Array();
