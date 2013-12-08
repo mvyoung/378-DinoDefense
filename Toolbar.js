@@ -28,6 +28,7 @@ Remove = Class.create(Sprite, {
       } else if (remove === 0) {
          remove = 1;
       }
+      console.log("REMOVE: " + remove);
    }
 });
 

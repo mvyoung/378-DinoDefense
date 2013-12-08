@@ -1,7 +1,7 @@
 Grid = Class.create(Map, {
    initialize: function(mapdata) {
       Map.call(this, gridPx, gridPx);
-      this.image = game.assets['images/grid_basic.png'];
+      this.image = game.assets['images/grid.png'];
       this.mapdata = mapdata;
       this.loadData(mapdata);
       this.collisionData = mapdata.slice(0);
@@ -27,7 +27,6 @@ Grid = Class.create(Map, {
          if (selection === 1) {
             var tower = new GunTower();
             this.addTower(x, y, tower);
-            console.log("TOWER CAN BE ADDED");
          }
       } else {
          if (selection > 0) {
