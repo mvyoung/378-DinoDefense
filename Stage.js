@@ -15,7 +15,7 @@ Stage = Class.create(Scene, {
 		      var d = new Enemy(-40, 9 * gridPx, 0);
               d.key = i;
 		      //this.addChild(d);
-			  enemies[enemies.length] = d;
+			 
 		   }
 
 

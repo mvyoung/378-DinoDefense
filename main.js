@@ -14,7 +14,7 @@ this.citizens = 20;
 
 // $$
 this.money = 50;
-var enemies = new Array();
+var enemies = [];
 
 // converts pixel coordinates to grid coordinates
 PxToGrid = function(num) {

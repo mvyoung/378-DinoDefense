@@ -34,7 +34,7 @@ Tower = Class.create(Sprite, {
    scan: function() {
 	   for (var i = 0; i < enemies.length; i++) {
 	       //console.log("looking at " + enemies[i].x + " " + enemies[i].y);
-		   if(this.within(enemies[i], 200)) {
+		   if( typeof enemies[i] != 'undefined' &&this.within(enemies[i], 200)) {
 			  //console.log("looking at " + enemies[i].x + " " + enemies[i].y);
 		      return enemies[i];
 		   }

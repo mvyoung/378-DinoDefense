@@ -22,6 +22,7 @@ Enemy = Class.create(Sprite, // extend the sprite class
                 }
                 game.currentScene.insertBefore(this, game.currentScene.toolbar);
         //game..addChild(this);
+		enemies[key] = this;
     },
     remove: function() {
         game.currentScene.removeChild(this);
@@ -30,11 +31,13 @@ Enemy = Class.create(Sprite, // extend the sprite class
     },
     //define the enterframe event listener
     onenterframe: function() {
-                if (this.isSlowed) {
+		 if (this.age % 4 == 0) {
+			  if (this.isSlowed) {
                         this.x += this.moveSpeed/2;
                 } else {
                         this.x += this.moveSpeed;
                 }
+		  }
         
         if (this.x > 840) {
             this.remove();
