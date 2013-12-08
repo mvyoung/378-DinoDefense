@@ -9,8 +9,29 @@ Toolbar = Class.create(Sprite, {
    onaddedtoscene: function() {
       var tower1 = new Tower1(this.x + 20, this.y + 50);
       var remove = new Remove(this.x + 20, this.y + 400);
+      var moneyAmount = new Money(this.x + 20, this.y + 200);
+      this.scene.addChild(moneyAmount);
       this.scene.addChild(remove);
       this.scene.addChild(tower1);
+   }
+});
+
+Money = Class.create(Label, {
+   initialize: function(x, y) {
+      Label.call(this, 150, 50);
+      this.x = x;
+      this.y = y;
+      this.text = "Money: " + money;
+      this.font = '30px normal';
+   },
+
+   onenterframe: function() {
+      if (money === 0) {
+         this.color = '#FF0000';
+      } else {
+         this.color = '#000000';
+      }
+      this.text = "Money: " + money;
    }
 });
 
@@ -37,15 +58,20 @@ Tower1 = Class.create(Sprite, {
       Sprite.call(this, gridPx, gridPx);
       this.x = x;
       this.y = y;
-      this.image = game.assets['images/tower.jpg'];
+      this.image = game.assets['images/tower_gun.jpg'];
    },
 
    ontouchend: function() {
-      if (selection !== 1) {
+      if (selection !== 1 && money >= 10) {
          selection = 1;
+         money -= 10;
          console.log("SELECTION: " + selection);
-      } else {
+      } else if (selection !== 1 && money < 10) {
+         console.log("NOT ENOUGH MONEY");
+      } else if (selection === 1) {
          selection = 0;
+         money += 10;
+         console.log("DESELECTED");
       }
    }
 });
