@@ -14,7 +14,7 @@ Stage = Class.create(Scene, {
            for (i = 0; i < 1; i++) {
 		      var d = new Enemy(40, 200 + (i *50), 0); 
 		      //this.addChild(d);
-			  enemies[i] = d;
+			  enemies[enemies.length] = d;
 		   }
 
 

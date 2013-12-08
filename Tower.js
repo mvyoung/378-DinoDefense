@@ -2,6 +2,13 @@ Tower = Class.create(Sprite, {
    initialize: function() {
       Sprite.call(this, gridPx, gridPx);
       this.cost = 0;
+	  this.hasShot = false;
+	  this.lastShot = 0;
+   },
+   
+   onenterframe: function() {
+	   this.shootAtClosest(); 
+	
    },
 
    ontouchend: function() {
@@ -15,11 +22,12 @@ Tower = Class.create(Sprite, {
    
    shootAtClosest: function() {
 		var target = this.scan();
-		if (target != 0) {
+		// has shot used for first shot, too lazy to think atm.
+		if ((target != 0 && (this.age - this.lastShot) > 100) || !this.hasShot) {
 		  // console.log("shooting at " + target.x + " " + target.y);
 		   var b = new Bullet(this.x, this.y, target);
-		   this.scene.addChild(b);
-		
+		   this.lastShot = this.age;
+		   this.hasShot = true;
 		}
 	},
    
