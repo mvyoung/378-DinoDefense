@@ -41,3 +41,18 @@ Enemy = Class.create(Sprite, // extend the sprite class
         }
     },
 });
+
+Health = Class.create( {
+    
+});
+
+initHealth = function() {
+   healthLabel = new Label("");
+   healthLabel.textAlign = "right";
+   healthLabel.color = 'white';
+   healthLabel.addEventListener('enterframe', function() {
+      healthLabel.text = "Health: " + player.health;
+   });
+
+   return healthLabel;
+};

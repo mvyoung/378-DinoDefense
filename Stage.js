@@ -2,7 +2,7 @@ Stage = Class.create(Scene, {
    initialize: function(map) {
       Scene.call(this);
 
-      var toolbar = new Toolbar(200, 800, 800, 0);
+      var toolbar = new Toolbar(800, 200, 0, 800);
 
       this.map = map;
       this.addChild(map);
@@ -20,7 +20,5 @@ Stage = Class.create(Scene, {
 
 
        }	   
-	
-	
-	},
+	}
 });

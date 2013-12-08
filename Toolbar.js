@@ -7,8 +7,8 @@ Toolbar = Class.create(Sprite, {
    },
 
    onaddedtoscene: function() {
-      var tower1 = new Tower1(this.x + 20, this.y + 100);
-      var remove = new Remove(this.x + 20, this.y + 700);
+      var tower1 = new Tower1(this.x + 200, this.y + 50);
+      var remove = new Remove(this.x + 20, this.y + 100);
       var citizenCount = new Citizens(this.x + 20, this.y + 20);
       var moneyAmount = new Money(this.x + 20, this.y + 50);
       this.scene.addChild(citizenCount);
