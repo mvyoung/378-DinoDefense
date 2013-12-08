@@ -4,7 +4,7 @@ Tower = Class.create(Sprite, {
    },
 
    ontouchend: function() {
-      this.scene.map.collisionData[this.xCoord][this.yCoord] = 0;
+      this.scene.map.collisionData[this.xGrid][this.yGrid] = 0;
       this.scene.removeChild(this);
    }
 });
@@ -13,7 +13,7 @@ Tower = Class.create(Sprite, {
 GunTower = Class.create(Tower, {
    initialize: function() {
       Tower.call(this);
-      this.image = game.assets['images/chara3.png'];
+      this.image = game.assets['images/tower.jpg'];
 
       this.cost = 10;
       this.rate = 5;
