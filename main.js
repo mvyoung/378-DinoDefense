@@ -38,7 +38,9 @@ window.onload = function() {
       'images/remove.png',
       'images/transparent.png',
 	  'images/chara1.png',
-	  'images/bullet.png'
+	  'images/bullet.png',
+     'images/health_green.png',
+     'images/health_red.png'
    );
 
    game.onload = function() {
