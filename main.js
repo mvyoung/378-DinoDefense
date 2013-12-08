@@ -29,7 +29,7 @@ window.onload = function() {
 
    game.preload(
       'images/grid.png',
-      'images/tower.jpg',
+      'images/tower_gun.jpg',
       'images/toolbar.png',
       'images/remove.png',
       'images/transparent.png'
