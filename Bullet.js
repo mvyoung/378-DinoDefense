@@ -22,7 +22,7 @@ Bullet = Class.create(Sprite, // extend the sprite class
          if (this.within(this.target, 30)) {
 			console.log("hit");
 			this.target.remove();
-			game.c urrentScene.removeChild(this);
+			game.currentScene.removeChild(this);
 			delete this;
 		 }
 		 

@@ -13,7 +13,7 @@ Enemy = Class.create(Sprite, // extend the sprite class
         this.y = y;
         this.gridX = 0;
         this.gridY = 9;
-        this.key = 0;
+        
                 
                 if (enemyType == 0) {
                         this.image = game.assets['images/grid.png'];
@@ -22,7 +22,7 @@ Enemy = Class.create(Sprite, // extend the sprite class
                 }
                 game.currentScene.insertBefore(this, game.currentScene.toolbar);
         //game..addChild(this);
-		enemies[key] = this;
+		enemies[enemies.length] = this;
     },
     remove: function() {
         game.currentScene.removeChild(this);
