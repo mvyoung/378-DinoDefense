@@ -6,8 +6,10 @@ this.gridPx = 40;
 // which tower is currently selected to build (0 is no tower selected)
 this.selection = 0;
 
+// boolean value for removing towers
 this.remove = 0;
 
+// $$
 this.money = 50;
 
 // converts pixel coordinates to grid coordinates
@@ -26,9 +28,6 @@ window.onload = function() {
    game = new Game(1000, 800);
 
    game.preload(
-      'images/icon0.png',
-      'images/chara3.png',
-      'images/gameover.png',
       'images/grid.png',
       'images/tower.jpg',
       'images/toolbar.png',
@@ -81,7 +80,7 @@ window.onload = function() {
          [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
          [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
       ];
-      var grid = new Grid(map1);
+      var grid = new Grid(map1, col1);
       var tower = new GunTower();
       var stage = new Stage(grid);
       game.pushScene(stage);

@@ -1,10 +1,10 @@
 Grid = Class.create(Map, {
-   initialize: function(mapdata) {
+   initialize: function(mapdata, coldata) {
       Map.call(this, gridPx, gridPx);
       this.image = game.assets['images/grid.png'];
       this.mapdata = mapdata;
       this.loadData(mapdata);
-      this.collisionData = mapdata.slice(0);
+      this.collisionData = coldata;
 
       this.cover = new Sprite(gridPx * mapdata[0].length, gridPx * mapdata.length);
       this.cover.image = game.assets['images/transparent.png'];
