@@ -13,8 +13,8 @@ Stage = Class.create(Scene, {
 	   if (this.age % 200 === 0) {
            for (i = 0; i < 1; i++) {
 		      var d = new Enemy(40, 200 + (i *50), 0); 
-		      this.addChild(d);
-			  enemies[enemies.length] = d;
+		      //this.addChild(d);
+			  enemies[i] = d;
 		   }
 
 

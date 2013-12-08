@@ -11,6 +11,7 @@ this.remove = 0;
 
 // $$
 this.money = 50;
+var enemies = new Array();
 
 // converts pixel coordinates to grid coordinates
 PxToGrid = function(num) {
@@ -32,7 +33,8 @@ window.onload = function() {
       'images/tower.jpg',
       'images/toolbar.png',
       'images/remove.png',
-      'images/transparent.png'
+      'images/transparent.png',
+	  'images/chara1.png'
    );
 
    game.onload = function() {

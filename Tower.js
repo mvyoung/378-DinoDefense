@@ -9,8 +9,33 @@ Tower = Class.create(Sprite, {
          this.scene.removeChild(this);
          remove = 0;
       }
-   }
+   },
+   
+   shootAtClosest: function() {
+		var target = this.scan();
+		if (target != 0) {
+		  // console.log("shooting at " + target.x + " " + target.y);
+		   var b = new Bullet(this.x, this.y, target);
+		   this.scene.addChild(b);
+		
+		}
+	},
+   
+   scan: function() {
+	   for (var i = 0; i < enemies.length; i++) {
+	       //console.log("looking at " + enemies[i].x + " " + enemies[i].y);
+		   if(this.within(enemies[i], 200)) {
+			  //console.log("looking at " + enemies[i].x + " " + enemies[i].y);
+		      return enemies[i];
+		   }
+	      
+	   }
+	   return 0;
+	
+	},
 });
+
+
 
 // REPEAT FOR OTHER TOWER TYPES
 GunTower = Class.create(Tower, {
