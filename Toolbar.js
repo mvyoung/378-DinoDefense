@@ -132,6 +132,7 @@ Tower2 = Class.create(Sprite, {
       } else if (selection !== 2 && money < 10) {
          console.log("NOT ENOUGH MONEY");
       } else if (selection === 2) {
+         selection = 0;
          console.log("DESELECTED");
       }
    }
@@ -162,6 +163,7 @@ Tower3 = Class.create(Sprite, {
       } else if (selection !== 3 && money < 10) {
          console.log("NOT ENOUGH MONEY");
       } else if (selection === 3) {
+         selection = 0;
          console.log("DESELECTED");
       }
    }
