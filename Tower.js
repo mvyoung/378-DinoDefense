@@ -4,8 +4,6 @@ Tower = Class.create(Sprite, {
       this.cost = 0;
 	  this.hasShot = false;
 	  this.lastShot = 0;
-     this.show_radius = 0;
-     this.radius = null;
    },
    
    onenterframe: function() {
@@ -18,13 +16,7 @@ Tower = Class.create(Sprite, {
          this.scene.removeChild(this);
          remove = 0;
          money += this.cost / 2;
-      } else if (this.show_radius === 0) {
-         this.show_radius = 1;
-         this.radius = new Sprite(this.range, this.range);
-         this.radius.context.beginPath();
-         this.radius.context.arc(radius / 2, radius / 2, 0, Math.PI * 2, true);
-      }
-   },
+      }   },
    
    shootAtClosest: function() {
 		var target;
