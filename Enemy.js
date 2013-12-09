@@ -1,9 +1,9 @@
-Enemy = Class.create(Sprite, // extend the sprite class
+Enemy = Class.create(Sprite,
 {
-    initialize: function(gx, gy, enemyType) { //initialization
-        Sprite.call(this, 40, 40); //initialize the sprite object
+    initialize: function(gx, gy, enemyType) { 
+        Sprite.call(this, 40, 40); 
         this.frame = 0;
-        //this.image = game.assets['chara1.png']; //load image asset
+
         this.moveSpeed = 2; 
         this.isSlowed = false;
                 
@@ -13,6 +13,7 @@ Enemy = Class.create(Sprite, // extend the sprite class
         this.gridYTarget = gy;
         this.x = this.gridX * gridPx;
         this.y = this.gridY * gridPx;
+        this.inv = false; // is the image inverted
 
         
 		this.numFrames = 4;
@@ -21,7 +22,7 @@ Enemy = Class.create(Sprite, // extend the sprite class
        
 		if (enemyType == 0) { //sml enemy
                 this.image = game.assets['images/enm_sml.png'];
-                this.moveSpeed = 6;
+                this.moveSpeed = 5;
                 this.health = 15;
                 this.maxHealth = this.health;
 				this.numFrames = 4;
@@ -55,17 +56,23 @@ Enemy = Class.create(Sprite, // extend the sprite class
         this.healthBar = new Health(this);
         game.currentScene.addChild(this);
     },
+    takeDamage: function(dmg) {
+        this.health -= dmg;
+        if (this.health <= 0) {
+            money += 10;
+            this.remove();
+        }
+    },
     remove: function() {
         this.healthBar.remove();
         game.currentScene.removeChild(this);
-        money += 10;
         delete enemies [this.key]; //TODO: handle this
         delete this;
     },
     //define the enterframe event listener
     onenterframe: function() {
-        //animate
-		
+        
+		//Animate
 		if( (this.age % this.frameRate) == 0)
 			if( this.frame == (this.numFrames-1) )
 				this.frame = 0;
@@ -83,40 +90,76 @@ Enemy = Class.create(Sprite, // extend the sprite class
         //Check if new grid is reached
         //console.log((this.gridXTarget*gridPx) - this.x);
         //console.log((this.gridYTarget*gridPx) - this.y);
-        if (Math.abs((this.gridXTarget*gridPx) - this.x) <= this.moveSpeed &&
-           Math.abs((this.gridYTarget*gridPx) - this.y) <= this.moveSpeed ) {
+        if (Math.abs((this.gridXTarget*gridPx) - this.x) < this.moveSpeed &&
+           Math.abs((this.gridYTarget*gridPx) - this.y) < this.moveSpeed ) {
            /*for (var i = 0; i < 20; i++)
             console.log(game.currentScene.map.mapdata[this.gridYTarget][this.gridXTarget + 1]);*/
             //Find next direction
             //FYI indices are backasswards
             if (game.currentScene.map.mapdata[this.gridYTarget][this.gridXTarget + 1] == 2 &&
                (this.gridXTarget + 1) != this.gridX) {
-               //console.log("right");
+               //console.log("East");
                this.gridX = this.gridXTarget;
                this.gridY = this.gridYTarget;
                this.gridXTarget = this.gridXTarget + 1;
                this.gridYTarget = this.gridYTarget;
+               
+               // Rotate Sprite
+               this.rotate(0 - this.rotation);
+               
+               //Check for inversion
+               if (this.inv) {
+                    this.scale(1,-1);
+                    this.inv = false;
+               }
             } else if (game.currentScene.map.mapdata[this.gridYTarget][this.gridXTarget - 1] == 2 &&
                (this.gridXTarget - 1) != this.gridX) {
-               //console.log("left");
+               //console.log("West");
                this.gridX = this.gridXTarget;
                this.gridY = this.gridYTarget;
                this.gridXTarget = this.gridXTarget - 1;
                this.gridYTarget = this.gridYTarget;
+               
+               // Rotate Sprite
+               this.rotate(180 - this.rotation);
+               
+               //Check for inversion
+               if (!this.inv) {
+                    this.scale(1,-1);
+                    this.inv = true;
+               }
             } else if (game.currentScene.map.mapdata[this.gridYTarget + 1][this.gridXTarget] == 2 &&
                (this.gridYTarget + 1) != this.gridY) {
-               //console.log("down");
+               //console.log("South");
                this.gridX = this.gridXTarget;
                this.gridY = this.gridYTarget;
                this.gridXTarget = this.gridXTarget;
                this.gridYTarget = this.gridYTarget + 1;
+               
+               // Rotate Sprite
+               this.rotate(90 - this.rotation);
+               
+               //Check for inversion
+               if (this.inv) {
+                    this.scale(1,-1);
+                    this.inv = false;
+               }
             } else if (game.currentScene.map.mapdata[this.gridYTarget - 1][this.gridXTarget] == 2 &&
                (this.gridYTarget - 1) != this.gridY) {
-               //console.log("up");
+               //console.log("North");
                this.gridX = this.gridXTarget;
                this.gridY = this.gridYTarget;
                this.gridXTarget = this.gridXTarget;
                this.gridYTarget = this.gridYTarget - 1;
+               
+               // Rotate Sprite
+               this.rotate((-90) - this.rotation);
+               
+               //Check for inversion
+               if (this.inv) {
+                    this.scale(1,-1);
+                    this.inv = false;
+               }
             }
         }
         
