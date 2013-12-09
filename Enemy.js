@@ -5,7 +5,7 @@ Enemy = Class.create(Sprite, // extend the sprite class
         this.frame = 1;
         //this.image = game.assets['chara1.png']; //load image asset
         this.moveSpeed = 2;
-        this.health = 1;
+        this.health = 50;
         this.isSlowed = false;
                 
         this.gridX = gx;
@@ -15,7 +15,7 @@ Enemy = Class.create(Sprite, // extend the sprite class
         this.x = this.gridX * gridPx;
         this.y = this.gridY * gridPx;
         this.healthBar = new Health(this.x + 5, this.y - 10);
-        this.key = 0;
+        this.key = enemyCount++;
         
                 
         if (enemyType == 0) {
@@ -25,7 +25,7 @@ Enemy = Class.create(Sprite, // extend the sprite class
         }
         game.currentScene.insertBefore(this, game.currentScene.toolbar);
         //game..addChild(this);
-		enemies[enemies.length] = this;
+		enemies[this.key] = this;
     },
     remove: function() {
         game.currentScene.removeChild(this);

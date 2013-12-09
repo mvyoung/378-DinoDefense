@@ -23,9 +23,9 @@ Tower = Class.create(Sprite, {
    shootAtClosest: function() {
 		var target = this.scan();
 		// has shot used for first shot, too lazy to think atm.
-		if ((target != 0 && (this.age - this.lastShot) > 100) || !this.hasShot) {
+		if ((target != 0 && (this.age - this.lastShot) > this.rate) || !this.hasShot) {
 		  // console.log("shooting at " + target.x + " " + target.y);
-		   var b = new Bullet(this.x, this.y, target);
+		   var b = new Bullet(this.x, this.y, target, this.damage);
 		   this.lastShot = this.age;
 		   this.hasShot = true;
 		}
@@ -54,7 +54,7 @@ GunTower = Class.create(Tower, {
       this.image = game.assets['images/tower_gun.jpg'];
 
       this.cost = 10;
-      this.rate = 5;
+      this.rate = 100;
       this.damage = 10;
       this.range = 5;
    }
