@@ -23,7 +23,7 @@ Stage = Class.create(Scene, {
         if(this.bgm.currentTime >= this.bgm.duration ){
             this.bgm.play();
         }
-        
+
         if (this.frameDelay > 0) {
             this.frameDelay--;
             if (this.frameDelay == 1) {
@@ -48,6 +48,9 @@ Stage = Class.create(Scene, {
             if (this.curWave == this.numWaves) {
                 // End the game
                 console.log("You Win!");
+                var win = new Win();
+                game.pushScene(win);
+                game.stop();
             } else {
                 this.frameDelay = 450;
                 console.log("Wave "+(this.curWave-1)+" Over");
