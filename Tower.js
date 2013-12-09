@@ -34,7 +34,7 @@ Tower = Class.create(Sprite, {
 			count++;
 	    }               
 		// has shot used for first shot, too lazy to think atm.
-		if ((target != 0 && (this.age - this.lastShot) > this.rate) || !this.hasShot) {
+		if (( target != 0 && (this.age - this.lastShot) > this.rate) || (target != 0 && !this.hasShot)) {
 		  // console.log("shooting at " + target.x + " " + target.y);
 		   var b = new Bullet(this.x, this.y, target, this.damage, this.bType);
 		   this.lastShot = this.age;
@@ -43,6 +43,7 @@ Tower = Class.create(Sprite, {
 	},
    
    scan: function() {
+
 	   for (var i = 0; i < enemies.length; i++) {
 	       //console.log("looking at " + enemies[i].x + " " + enemies[i].y);
 		   if( typeof enemies[i] != 'undefined' &&this.within(enemies[i], 200)) {
@@ -92,7 +93,7 @@ ExplosiveTower = Class.create(Tower, {
 	   this.bType = 2; 
       this.cost = 10;
       this.rate = 150;
-      this.damage = 100;
+      this.damage = 15;
       this.range = 3;
    }
 });

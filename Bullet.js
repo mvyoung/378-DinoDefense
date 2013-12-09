@@ -1,13 +1,19 @@
 Bullet = Class.create(Sprite, // extend the sprite class
 {
     initialize: function(x, y, target, damage, bType) { //initialization
-        Sprite.call(this, 5, 5); //initialize the sprite object
+	    if (target.x == 'undefined') {
+		   return;
+		}
+		console.log(target.x+ "  " + target.y);
+		   
+		Sprite.call(this, 10, 9); //initialize the sprite object
 		//console.log("adding bullet at " + x + "  "+ y); 
 		this.frame = 0;
 		this.x = x; 
 		this.bType = bType;
 		this.explosiveRange = 100;
 		this.y = y;
+		
 		this.damage = damage;
 		this.target = target;
 		this.tX  =  target.x;
@@ -62,9 +68,14 @@ Bullet = Class.create(Sprite, // extend the sprite class
 		 
 	},
 	explosiveAttack: function() {
+		 
+		 var first = true;
 		for (var i = 0; i < enemies.length; i++) {
 		   if (typeof enemies[i] != 'undefined' && this.within(enemies[i], this.explosiveRange)) {
-		       new Explosion(enemies[i].x, enemies[i].y);
+		      if (first) {
+			     new Explosion(enemies[i].x, enemies[i].y);
+				 first = false;
+			  }
 			  enemies[i].takeDamage(this.damage);
 			 
 		
@@ -80,7 +91,8 @@ Bullet = Class.create(Sprite, // extend the sprite class
 Explosion = Class.create(Sprite, 
 {
 	initialize: function(x, y) {
-	 Sprite.call(this, 25, 25);
+	 Sprite.call(this, 40, 40);
+	 this.scale(3,3);
 	 this.x = x, 
 	 this.y = y;
 	 this.frame =  0;
