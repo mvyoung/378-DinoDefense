@@ -1,16 +1,25 @@
 Bullet = Class.create(Sprite, // extend the sprite class
 {
-    initialize: function(x, y, target, damage) { //initialization
+    initialize: function(x, y, target, damage, bType) { //initialization
         Sprite.call(this, 5, 5); //initialize the sprite object
 		//console.log("adding bullet at " + x + "  "+ y); 
 		this.frame = 0;
 		this.x = x; 
+		this.bType = bType;
 		this.y = y;
 		this.damage = damage;
 		this.target = target;
+		this.tX  =  target.x;
+		this.tY = target.y;
         
-		this.image = game.assets['images/bullet.png']; //load image asset
-        this.tl.moveTo(target.x, target.y, 30);
+		if (this.bType == 0) 
+			this.image = game.assets['images/bullet.png']; //load image asset
+        else if (this.bType == 1)
+			this.image = game.assets['images/bullet.png']; //load image asset
+		else if (this.bType == 2)
+			this.image = game.assets['images/bullet.png']; //load image asset
+		
+		this.tl.moveTo(this.tX, this.tY, 30);
 		
 		game.currentScene.addChild(this);
 		
@@ -21,9 +30,17 @@ Bullet = Class.create(Sprite, // extend the sprite class
     //define the enterframe event listener
     onenterframe: function() {
          if (this.within(this.target, 50)) {
-			console.log("before " + this.target.health);
+			//console.log("before " + this.target.health);
 			this.target.health = this.target.health - this.damage;
-			console.log("after " + this.target.health);
+			//console.log("after " + this.target.health);
+			
+			if (this.bType == 1)
+			   this.target.isSlowed = true;
+		    else if (this.bType == 2)
+			   this.explosiveAttack(); 
+			
+			
+			
 			if (this.target.health == 0) {
 				this.target.remove();
 			}
@@ -31,10 +48,15 @@ Bullet = Class.create(Sprite, // extend the sprite class
 			delete this;
 		 }
 		 // not working
-		 if (this.x === this.target.x && this.y === this.target.y) {
+		 //console.log(this.tX + " " + this.tY + "  <>  " +  this.x + "  " + this.y);
+		 if (this.tX == Math.round(this.x) && this.tY == Math.round(this.y)) {
 		    game.currentScene.removeChild(this);
 			delete this;
 		 } 
 		 
+	},
+	explosiveAttack: function() {
+	     // attack everything within range.
+	
 	},
 });
