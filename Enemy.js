@@ -13,7 +13,7 @@ Enemy = Class.create(Sprite, // extend the sprite class
         this.gridYTarget = gy;
         this.x = this.gridX * gridPx;
         this.y = this.gridY * gridPx;
-        this.key = 0;
+
         
 		this.numFrames = 4;
 		this.frameRate = 2;
@@ -58,6 +58,7 @@ Enemy = Class.create(Sprite, // extend the sprite class
     remove: function() {
         this.healthBar.remove();
         game.currentScene.removeChild(this);
+        money += 10;
         delete enemies [this.key]; //TODO: handle this
         delete this;
     },
@@ -122,6 +123,7 @@ Enemy = Class.create(Sprite, // extend the sprite class
         if (this.x > 840) { //dino made it through path
 			//CALL function to decrement number of citizens
             this.remove();
+            citizens--;
         }
     },
 });
