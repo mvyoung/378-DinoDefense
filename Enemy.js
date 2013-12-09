@@ -4,7 +4,7 @@ Enemy = Class.create(Sprite, // extend the sprite class
         Sprite.call(this, 40, 40); //initialize the sprite object
         this.frame = 1;
         //this.image = game.assets['chara1.png']; //load image asset
-        this.moveSpeed = 1;
+        this.moveSpeed = 2;
         this.isSlowed = false;
                 
         this.gridX = gx;
@@ -13,28 +13,24 @@ Enemy = Class.create(Sprite, // extend the sprite class
         this.gridYTarget = gy;
         this.x = this.gridX * gridPx;
         this.y = this.gridY * gridPx;
-
-        this.key = enemyCount++;
-
-        this.healthBar = new Health(this);
-       
-
+        this.key = 0;
         
                 
         if (enemyType == 0) {
                 this.image = game.assets['images/grid.png'];
-                this.movespeed = 1;
-                this.health = 20;
+                this.movespeed = 2;
+                this.health = 30;
+                this.maxHealth = this.health;
         }
-        game.currentScene.insertBefore(this, game.currentScene.toolbar);
-        //game..addChild(this);
-		enemies[this.key] = this;
+        
+        this.healthBar = new Health(this);
+        game.currentScene.addChild(this);
     },
     remove: function() {
-      game.currentScene.removeChild(this.healthBar);
-      game.currentScene.removeChild(this);
-      delete enemies [this.key]; //TODO: handle this
-      delete this;
+        this.healthBar.remove();
+        game.currentScene.removeChild(this);
+        delete enemies [this.key]; //TODO: handle this
+        delete this;
     },
     //define the enterframe event listener
     onenterframe: function() {
@@ -94,21 +90,63 @@ Enemy = Class.create(Sprite, // extend the sprite class
 
 Health = Class.create(Sprite, {
     initialize: function(parent) {
-        Sprite.call(this, 30, 5);
+        Sprite.call(this, 30, 7);
+        this.xOffset = 5;
         this.parent = parent;
-        this.x = parent.x + 5;
-        this.y = parent.y - 10;
+        this.prevHealth = this.parent.health;
+        this.x = parent.x + this.xOffset;
+        this.y = parent.y - 8;
         this.image = game.assets['images/health_green.png'];
         game.currentScene.addChild(this);
     },
 
     onenterframe: function() {
+        this.x = this.parent.x + this.xOffset;
+        this.y = this.parent.y - 10;
+        
+        //console.log(this.prevHealth +" "+this.parent.health);
+        if (this.prevHealth != this.parent.health) {
+            console.log("hi");
+            //this.scale((this.parent.health * 1.0)/this.parent.maxHealth,1);
+            this.width = (30 * ((this.parent.health * 1.0)/this.parent.maxHealth));
+            //this.healthFG.xOffset = 100;
+            this.prevHealth = this.parent.health;
+        }
+    },
+    remove: function() {
+        game.currentScene.removeChild(this);
+        delete this;
+    }
+});
+
+HealthBG = Class.create(Sprite, {
+    initialize: function(parent) {
+        Sprite.call(this, 30, 5);
+        this.parent = parent;
+        this.prevHealth = this.parent.health;
+        this.x = parent.x + 5;
+        this.y = parent.y - 10;
+        this.image = game.assets['images/health_red.png'];
+        game.currentScene.addChild(this);
+        this.healthFG = new Health(this.parent);
+    },
+
+    onenterframe: function() {
         this.x = this.parent.x + 5;
         this.y = this.parent.y - 10;
-        //console.log("Health Location - x: "+this.x+"  y: "+this.y);
-    
-        if (this.width < 10) {
-            this.image = game.assets['images/health_red.png'];
+        //console.log(this.prevHealth +" "+this.parent.health);
+        if (this.prevHealth != this.parent.health) {
+            console.log("hi");
+            this.healthFG.remove();
+            this.healthFG = new Health(this.parent);
+            this.healthFG.scale((this.parent.health * 1.0)/this.parent.maxHealth,1);
+            //this.healthFG.xOffset = 100;
+            this.prevHealth = this.parent.health;
         }
+    },
+    remove: function() {
+        this.healthFG.remove();
+        game.currentScene.removeChild(this);
+        delete this;
     }
 });
