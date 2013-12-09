@@ -22,7 +22,7 @@ Bullet = Class.create(Sprite, // extend the sprite class
     onenterframe: function() {
          if (this.within(this.target, 40)) {
 			console.log("before " + this.target.health);
-			this.target.health -= this.damage;// his.target.health - this.damage;
+			this.target.health -= this.damage;// this.target.health - this.damage;
 			console.log("after " + this.target.health);
 			if (this.target.health == 0) {
 				this.target.remove();

@@ -25,7 +25,7 @@ Tower = Class.create(Sprite, {
 		// has shot used for first shot, too lazy to think atm.
 		if ((target != 0 && (this.age - this.lastShot) > this.rate) || !this.hasShot) {
 		  // console.log("shooting at " + target.x + " " + target.y);
-		   var b = new Bullet(this.x, this.y, target, this.damage);
+		   var b = new Bullet(this.x, this.y, target, this.bType, this.damage);
 		   this.lastShot = this.age;
 		   this.hasShot = true;
 		}
@@ -52,7 +52,31 @@ GunTower = Class.create(Tower, {
    initialize: function() {
       Tower.call(this);
       this.image = game.assets['images/tower_gun.jpg'];
+	  this.bType = 0; 
+      this.cost = 10;
+      this.rate = 100;
+      this.damage = 10;
+      this.range = 5;
+   }
+});
 
+FreezeTower = Class.create(Tower, {
+   initialize: function() {
+      Tower.call(this);
+      this.image = game.assets['images/tower_gun.jpg'];
+	  this.bType = 1; 
+      this.cost = 10;
+      this.rate = 100;
+      this.damage = 10;
+      this.range = 5;
+   }
+});
+
+ExplosiveTower = Class.create(Tower, {
+   initialize: function() {
+      Tower.call(this);
+      this.image = game.assets['images/tower_gun.jpg'];
+	  this.bType = 2; 
       this.cost = 10;
       this.rate = 100;
       this.damage = 10;
