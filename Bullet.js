@@ -43,12 +43,10 @@ Bullet = Class.create(Sprite, // extend the sprite class
 		    else if (this.bType == 2)
 			   this.explosiveAttack(); 
 			else if (this.bType == 0 )
-			   this.target.health = this.target.health - this.damage;
+			   this.target.takeDamage(this.damage);
 			
 			
-			if (this.target.health == 0) {
-				this.target.remove();
-			}
+			
 			game.currentScene.removeChild(this);
 			delete this;
 		 }
@@ -63,13 +61,10 @@ Bullet = Class.create(Sprite, // extend the sprite class
 	explosiveAttack: function() {
 		for (var i = 0; i < enemies.length; i++) {
 		   if (typeof enemies[i] != 'undefined' && this.within(enemies[i], this.explosiveRange)) {
-		      enemies[i].health = enemies[i].health - this.damage
+		      enemies[i].takeDamage(this.damage);
 			  new Explosion(this.x, this.y);
 		
-			  if (enemies[i].health == 0) {
-			     this.target.remove();
-				 // the enemy remove function removes from the scene.
-			  }
+			  
 		   }		   
 		 
 		 }
@@ -81,10 +76,10 @@ Bullet = Class.create(Sprite, // extend the sprite class
 Explosion = Class.create(Sprite, 
 {
 	initialize: function(x, y) {
-	 Sprite.call(this, 40, 40);
-	 this.x = x, 
-	 this.y = y;
-	 this.frame =  0;
+	 Sprite.call(this, 40, 30);
+	 this.x = x + 10, 
+	 this.y = y - 10;
+	 this.frame =  5;
 	 this.image = game.assets['images/explosion.png'];
 	 game.currentScene.addChild(this);
 	},
