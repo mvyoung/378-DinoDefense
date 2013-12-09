@@ -13,7 +13,7 @@ Victory = Class.create(Sprite, {
    initialize: function() {
       Sprite.call(this, 615, 167);
       this.image = game.assets['images/victory.png'];
-      this.x = 50;
+      this.x = 75;
       this.y = 400;
    }
 });
