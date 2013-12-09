@@ -31,9 +31,10 @@ Enemy = Class.create(Sprite, // extend the sprite class
 		enemies[this.key] = this;
     },
     remove: function() {
-        game.currentScene.removeChild(this);
-        delete enemies [this.key]; //TODO: handle this
-        delete this;
+      game.currentScene.removeChild(this.healthBar);
+      game.currentScene.removeChild(this);
+      delete enemies [this.key]; //TODO: handle this
+      delete this;
     },
     //define the enterframe event listener
     onenterframe: function() {
