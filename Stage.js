@@ -50,7 +50,7 @@ Stage = Class.create(Scene, {
                 console.log("You Win!");
             } else {
                 this.frameDelay = 450;
-                console.log("Wave "+(this.curWave-1)+"Over");
+                console.log("Wave "+(this.curWave-1)+" Over");
             }
         }
     

@@ -71,8 +71,8 @@ Play_Medium = Class.create(Sprite, {
     var numEnemiesPerWave = [5, 7, 5, 7, 10];
 
     var medium_map = new Grid(medium, medium_col);
-    var stage = new Stage(medium_map);
-    game.pushScene(stage, enemyTypes, numWaves, numEnemiesPerWave);
+    var stage = new Stage(medium_map, enemyTypes, numWaves, numEnemiesPerWave);
+    game.pushScene(stage);
   }
 });
 
@@ -93,7 +93,7 @@ Play_Hard = Class.create(Sprite, {
     var numEnemiesPerWave = [5, 7, 5, 7, 10];
 
     var hard_map = new Grid(hard, hard_col);
-    var stage = new Stage(hard_map);
-    game.pushScene(stage, enemyTypes, numWaves, numEnemiesPerWave);
+    var stage = new Stage(hard_map, enemyTypes, numWaves, numEnemiesPerWave);
+    game.pushScene(stage);
   }
 });
