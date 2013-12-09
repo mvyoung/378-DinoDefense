@@ -25,7 +25,7 @@ Tower = Class.create(Sprite, {
 		// has shot used for first shot, too lazy to think atm.
 		if ((target != 0 && (this.age - this.lastShot) > this.rate) || !this.hasShot) {
 		  // console.log("shooting at " + target.x + " " + target.y);
-		   var b = new Bullet(this.x, this.y, target, this.damage);
+		   var b = new Bullet(this.x, this.y, target, this.damage, this.bType);
 		   this.lastShot = this.age;
 		   this.hasShot = true;
 		}
