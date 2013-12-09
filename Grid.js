@@ -23,20 +23,20 @@ Grid = Class.create(Map, {
       if (!this.hitTest(e.x, e.y) && selection > 0) {
          var x = PxToGrid(e.x);
          var y = PxToGrid(e.y);
-
-         if (selection === 1) {
+             
+         if (selection === 1 && this.money >= 50) {
             var tower = new GunTower();
             this.addTower(x, y, tower);
-            money -= 10;
+            money -= tower.cost;
             game.currentScene.toolbar.tower1.opacity = .5;
-         } else if (selection === 2) {
+         } else if (selection === 2  && this.money >= 75) {
             var tower = new FreezeTower();
             this.addTower(x, y, tower);
-            money -= 10;
-         } else if (selection === 3) {
+            money -= tower.cost;
+         } else if (selection === 3 && this.money >= 100) {
             var tower = new ExplosiveTower();
             this.addTower(x, y, tower);
-            money -= 10;
+            money -= tower.cost;
          }
       } else {
          if (selection > 0) {

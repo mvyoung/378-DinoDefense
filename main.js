@@ -13,7 +13,7 @@ this.remove = 0;
 this.citizens = 1;
 
 // $$
-this.money = 50;
+var money = 50;
 var enemies = new Array();
 
 var enemyCount = 0;

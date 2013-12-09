@@ -22,35 +22,40 @@ Enemy = Class.create(Sprite,
        
 		if (enemyType == 0) { //sml enemy
                 this.image = game.assets['images/enm_sml.png'];
-                this.moveSpeed = 5;
+                this.moveSpeed = 4;
                 this.health = 15;
+				this.bounty = 10;
                 this.maxHealth = this.health;
 				this.numFrames = 4;
 				this.frameRate = 2;
         }
 		else if (enemyType == 1) { //med enemy
 				this.image = game.assets['images/enm_med.png'];
-                this.moveSpeed = 4;
+                this.moveSpeed = 2;
                 this.health = 30;
                 this.maxHealth = this.health;
 				this.numFrames = 8;
+				this.bounty = 15;
 				this.frameRate = 3;
 		}
 		else if (enemyType == 2) { //lrg enemy
 				this.image = game.assets['images/enm_lrg.png'];
-                this.moveSpeed = 2;
+                this.moveSpeed = 1;
                 this.health = 100;
                 this.maxHealth = this.health;
 				this.numFrames = 4;
+				this.bounty = 20;
 				this.frameRate = 8;
         }
 		else if (enemyType == 4) { //Boss enemy, not yet implemented
-				this.image = game.assets['images/enm_lrg.png'];
+				this.image = game.assets['images/grid.png'];
                 this.moveSpeed = 1;
                 this.health = 500;
+				this.bounty = 50;
                 this.maxHealth = this.health;
-				this.numFrames = 4;
-				this.frameRate = 12;
+				this.numFrames = 0;
+				this.frame = 1;
+				this.frameRate = 0;
 		}
 		
         this.healthBar = new Health(this);
@@ -65,7 +70,7 @@ Enemy = Class.create(Sprite,
     takeDamage: function(dmg) {
         this.health -= dmg;
         if (this.health <= 0) {
-            money += 10;
+            money += this.bounty;
             this.remove();
         }
     },

@@ -1,9 +1,7 @@
 Bullet = Class.create(Sprite, // extend the sprite class
 {
     initialize: function(x, y, target, damage, bType) { //initialization
-	    if (target.x == 'undefined') {
-		   return;
-		}
+	    
 		console.log(target.x+ "  " + target.y);
 		   
 		Sprite.call(this, 10, 9); //initialize the sprite object
@@ -62,7 +60,10 @@ Bullet = Class.create(Sprite, // extend the sprite class
 		 // not working
 		 //console.log(this.tX + " " + this.tY + "  <>  " +  this.x + "  " + this.y);
 		 if (this.tX == Math.round(this.x) && this.tY == Math.round(this.y)) {
-		    game.currentScene.removeChild(this);
+		    if (this.bType == 2) {
+			   this.explosiveAttack();
+			}
+			game.currentScene.removeChild(this);
 			delete this;
 		 } 
 		 
@@ -74,10 +75,12 @@ Bullet = Class.create(Sprite, // extend the sprite class
 		   if (typeof enemies[i] != 'undefined' && this.within(enemies[i], this.explosiveRange)) {
 		      if (first) {
 			     new Explosion(enemies[i].x, enemies[i].y);
+				 enemies[i].takeDamage(this.damage);
 				 first = false;
 			  }
-			  enemies[i].takeDamage(this.damage);
-			 
+			  else {
+			     enemies[i].takeDamage(this.damage / 2);
+			  }
 		
 			  
 		   }		   

@@ -1,7 +1,7 @@
 Tower = Class.create(Sprite, {
    initialize: function() {
       Sprite.call(this, 23, 40);
-      this.cost = 0;
+    
 	  this.hasShot = false;
 	  this.lastShot = 0;
      this.show_radius = 0;
@@ -46,7 +46,7 @@ Tower = Class.create(Sprite, {
 
 	   for (var i = 0; i < enemies.length; i++) {
 	       //console.log("looking at " + enemies[i].x + " " + enemies[i].y);
-		   if( typeof enemies[i] != 'undefined' &&this.within(enemies[i], 200)) {
+		   if( typeof enemies[i] != 'undefined' &&this.within(enemies[i], this.range)) {
 			  //console.log("looking at " + enemies[i].x + " " + enemies[i].y);
 		      return enemies[i];
 		   }
@@ -65,10 +65,10 @@ GunTower = Class.create(Tower, {
       Tower.call(this);
       this.image = game.assets['images/tower_gun.png'];
 	   this.bType = 0; 
-      this.cost = 10;
+      this.cost = 50;
       this.rate = 50;
-      this.damage = 15;
-      this.range = 10;
+      this.damage = 10;
+      this.range = 200;
    }
 });
 
@@ -77,11 +77,11 @@ FreezeTower = Class.create(Tower, {
       Tower.call(this);
       this.image = game.assets['images/tower_freeze.png'];
 	   this.bType = 1; 
-      this.cost = 10;
-      this.rate = 100;
-      this.damage = 10;
-      this.range = 5;
-	   this.bType = 1;
+      this.cost = 75;
+      this.rate = 50;
+      this.damage = 5;
+      this.range = 100;
+	   this.bType = 150;
 
    }
 });
@@ -91,9 +91,9 @@ ExplosiveTower = Class.create(Tower, {
       Tower.call(this);
       this.image = game.assets['images/tower_explosive.png'];
 	   this.bType = 2; 
-      this.cost = 10;
-      this.rate = 150;
-      this.damage = 15;
-      this.range = 3;
+      this.cost = 100;
+      this.rate = 200;
+      this.damage = 18;
+      this.range = 300;
    }
 });
