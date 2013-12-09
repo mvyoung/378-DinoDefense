@@ -60,9 +60,9 @@ GunTower = Class.create(Tower, {
       this.image = game.assets['images/tower_gun.png'];
 	   this.bType = 0; 
       this.cost = 10;
-      this.rate = 100;
-      this.damage = 10;
-      this.range = 5;
+      this.rate = 50;
+      this.damage = 15;
+      this.range = 10;
    }
 });
 
@@ -85,8 +85,8 @@ ExplosiveTower = Class.create(Tower, {
       this.image = game.assets['images/tower_explosive.png'];
 	   this.bType = 2; 
       this.cost = 10;
-      this.rate = 100;
-      this.damage = 10;
-      this.range = 5;
+      this.rate = 150;
+      this.damage = 100;
+      this.range = 3;
    }
 });
