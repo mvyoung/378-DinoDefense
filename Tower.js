@@ -46,7 +46,7 @@ Tower = Class.create(Sprite, {
 });
 
 
-
+// bType =  the type of bullet it will shoot, i.e freeze ect
 // REPEAT FOR OTHER TOWER TYPES
 GunTower = Class.create(Tower, {
    initialize: function() {
@@ -69,17 +69,19 @@ FreezeTower = Class.create(Tower, {
       this.rate = 100;
       this.damage = 10;
       this.range = 5;
+	  this.bType = 1; 
    }
 });
 
 ExplosiveTower = Class.create(Tower, {
    initialize: function() {
       Tower.call(this);
-      this.image = game.assets['images/tower_gun.jpg'];
+      this.image = game.assets['images/tower_explosive.gif'];
 	  this.bType = 2; 
       this.cost = 10;
       this.rate = 100;
       this.damage = 10;
       this.range = 5;
+	  this.bType = 2;
    }
 });

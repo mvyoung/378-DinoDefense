@@ -20,7 +20,7 @@ Bullet = Class.create(Sprite, // extend the sprite class
 	// if the target is not in the same, or gets destoryed, then remove this bullet
     //define the enterframe event listener
     onenterframe: function() {
-         if (this.within(this.target, 40)) {
+         if (this.within(this.target, 50)) {
 			console.log("before " + this.target.health);
 			this.target.health = this.target.health - this.damage;
 			console.log("after " + this.target.health);
