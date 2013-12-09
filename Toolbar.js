@@ -7,14 +7,18 @@ Toolbar = Class.create(Sprite, {
    },
 
    onaddedtoscene: function() {
-      var tower1 = new Tower1(this.x + 200, this.y + 50);
-      var remove = new Remove(this.x + 20, this.y + 100);
-      var citizenCount = new Citizens(this.x + 20, this.y + 20);
-      var moneyAmount = new Money(this.x + 20, this.y + 50);
-      this.scene.addChild(citizenCount);
-      this.scene.addChild(moneyAmount);
-      this.scene.addChild(remove);
-      this.scene.addChild(tower1);
+      this.tower1 = new Tower1(this.x + 200, this.y + 10);
+      this.tower2 = new Tower2(this.x + 400, this.y + 10);
+      this.tower3 = new Tower3(this.x + 600, this.y + 10);
+      this.remove = new Remove(this.x + 20, this.y + 100);
+      this.citizenCount = new Citizens(this.x + 20, this.y + 20);
+      this.moneyAmount = new Money(this.x + 20, this.y + 50);
+      this.scene.addChild(this.citizenCount);
+      this.scene.addChild(this.moneyAmount);
+      this.scene.addChild(this.remove);
+      this.scene.addChild(this.tower1);
+      this.scene.addChild(this.tower2);
+      this.scene.addChild(this.tower3);
    }
 });
 
@@ -74,22 +78,90 @@ Remove = Class.create(Sprite, {
 
 Tower1 = Class.create(Sprite, {
    initialize: function(x, y) {
-      Sprite.call(this, gridPx, gridPx);
+      Sprite.call(this, 180, 180);
       this.x = x;
       this.y = y;
-      this.image = game.assets['images/tower_gun.jpg'];
+      this.image = game.assets['images/tower_menu.png'];
+      this.frame = 0;
+      this.opacity = .5;
+   },
+
+   onenterframe: function() {
+      if (selection === 1) {
+         this.opacity = 1;
+      } else {
+         this.opacity = .5;
+      }
    },
 
    ontouchend: function() {
       if (selection !== 1 && money >= 10) {
          selection = 1;
-         money -= 10;
          console.log("SELECTION: " + selection);
       } else if (selection !== 1 && money < 10) {
          console.log("NOT ENOUGH MONEY");
       } else if (selection === 1) {
          selection = 0;
-         money += 10;
+         console.log("DESELECTED");
+      }
+   }
+});
+
+Tower2 = Class.create(Sprite, {
+   initialize: function(x, y) {
+      Sprite.call(this, 180, 180);
+      this.x = x;
+      this.y = y;
+      this.image = game.assets['images/tower_menu.png'];
+      this.frame = 1;
+      this.opacity = .5;
+   },
+
+   onenterframe: function() {
+      if (selection === 2) {
+         this.opacity = 1;
+      } else {
+         this.opacity = .5;
+      }
+   },
+
+   ontouchend: function() {
+      if (selection !== 2 && money >= 10) {
+         selection = 2;
+         console.log("SELECTION: " + selection);
+      } else if (selection !== 2 && money < 10) {
+         console.log("NOT ENOUGH MONEY");
+      } else if (selection === 2) {
+         console.log("DESELECTED");
+      }
+   }
+});
+
+Tower3 = Class.create(Sprite, {
+   initialize: function(x, y) {
+      Sprite.call(this, 180, 180);
+      this.x = x;
+      this.y = y;
+      this.image = game.assets['images/tower_menu.png'];
+      this.frame = 2;
+      this.opacity = .5;
+   },
+
+   onenterframe: function() {
+      if (selection === 3) {
+         this.opacity = 1;
+      } else {
+         this.opacity = .5;
+      }
+   },
+
+   ontouchend: function() {
+      if (selection !== 3 && money >= 10) {
+         selection = 3;
+         console.log("SELECTION: " + selection);
+      } else if (selection !== 3 && money < 10) {
+         console.log("NOT ENOUGH MONEY");
+      } else if (selection === 3) {
          console.log("DESELECTED");
       }
    }

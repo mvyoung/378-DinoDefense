@@ -7,8 +7,7 @@ Tower = Class.create(Sprite, {
    },
    
    onenterframe: function() {
-	   this.shootAtClosest(); 
-	
+	   this.shootAtClosest();
    },
 
    ontouchend: function() {
@@ -16,7 +15,7 @@ Tower = Class.create(Sprite, {
          this.scene.map.collisionData[this.xGrid][this.yGrid] = 0;
          this.scene.removeChild(this);
          remove = 0;
-         money += this.cost;
+         money += this.cost / 2;
       }
    },
    
@@ -52,7 +51,7 @@ GunTower = Class.create(Tower, {
    initialize: function() {
       Tower.call(this);
       this.image = game.assets['images/tower_gun.gif'];
-	  this.bType = 0; 
+	   this.bType = 0; 
       this.cost = 10;
       this.rate = 100;
       this.damage = 10;
@@ -64,12 +63,12 @@ FreezeTower = Class.create(Tower, {
    initialize: function() {
       Tower.call(this);
       this.image = game.assets['images/tower_freeze.gif'];
-	  this.bType = 1; 
+	   this.bType = 1; 
       this.cost = 10;
       this.rate = 100;
       this.damage = 10;
       this.range = 5;
-	  this.bType = 1; 
+	   this.bType = 1; 
    }
 });
 
@@ -77,11 +76,10 @@ ExplosiveTower = Class.create(Tower, {
    initialize: function() {
       Tower.call(this);
       this.image = game.assets['images/tower_explosive.gif'];
-	  this.bType = 2; 
+	   this.bType = 2; 
       this.cost = 10;
       this.rate = 100;
       this.damage = 10;
       this.range = 5;
-	  this.bType = 2;
    }
 });

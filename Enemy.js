@@ -106,7 +106,7 @@ Health = Class.create(Sprite, {
         
         //console.log(this.prevHealth +" "+this.parent.health);
         if (this.prevHealth != this.parent.health) {
-            console.log("hi");
+            console.log("I've been shot!");
             //this.scale((this.parent.health * 1.0)/this.parent.maxHealth,1);
             this.width = (30 * ((this.parent.health * 1.0)/this.parent.maxHealth));
             //this.healthFG.xOffset = 100;

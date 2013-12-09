@@ -27,6 +27,16 @@ Grid = Class.create(Map, {
          if (selection === 1) {
             var tower = new GunTower();
             this.addTower(x, y, tower);
+            money -= 10;
+            game.currentScene.toolbar.tower1.opacity = .5;
+         } else if (selection === 2) {
+            var tower = new FreezeTower();
+            this.addTower(x, y, tower);
+            money -= 10;
+         } else if (selection === 3) {
+            var tower = new ExplosiveTower();
+            this.addTower(x, y, tower);
+            money -= 10;
          }
       } else {
          if (selection > 0) {
@@ -38,7 +48,7 @@ Grid = Class.create(Map, {
    },
 
    addTower: function(x, y, tower) {
-      tower.x = x * gridPx;
+      tower.x = x * gridPx + 9;
       tower.y = y * gridPx;
       tower.xGrid = x;
       tower.yGrid = y;

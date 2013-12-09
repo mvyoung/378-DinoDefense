@@ -2,11 +2,11 @@ Stage = Class.create(Scene, {
    initialize: function(map) {
       Scene.call(this);
 
-      var toolbar = new Toolbar(800, 200, 0, 800);
+      this.toolbar = new Toolbar(800, 200, 0, 800);
 
       this.map = map;
       this.addChild(map);
-      this.addChild(toolbar);
+      this.addChild(this.toolbar);
    },
    
    onenterframe: function() {

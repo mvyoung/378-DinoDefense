@@ -35,17 +35,17 @@ window.onload = function() {
 
    game.preload(
       'images/grid.png',
-      'images/tower_gun.jpg',
       'images/toolbar.png',
       'images/remove.png',
       'images/transparent.png',
-	  'images/chara1.png',
-	  'images/bullet.png',
-     'images/health_green.png',
-     'images/health_red.png',
-	 'images/tower_gun.gif',
-	 'images/tower_freeze.gif',
-	 'images/tower_explosive.gif'
+ 	   'images/chara1.png',
+ 	   'images/bullet.png',
+      'images/health_green.png',
+      'images/health_red.png',
+	   'images/tower_gun.gif',
+	   'images/tower_freeze.gif',
+	   'images/tower_explosive.gif',
+      'images/tower_menu.png'
    );
 
    game.onload = function() {
