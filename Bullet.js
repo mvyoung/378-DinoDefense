@@ -6,6 +6,7 @@ Bullet = Class.create(Sprite, // extend the sprite class
 		this.frame = 0;
 		this.x = x; 
 		this.bType = bType;
+		this.explosiveRange = 100;
 		this.y = y;
 		this.damage = damage;
 		this.target = target;
@@ -19,7 +20,7 @@ Bullet = Class.create(Sprite, // extend the sprite class
 		else if (this.bType == 2)
 			this.image = game.assets['images/bullet.png']; //load image asset
 		
-		this.tl.moveTo(this.tX, this.tY, 30);
+		this.tl.moveTo(this.tX, this.tY, 20);
 		
 		game.currentScene.addChild(this);
 		
@@ -31,14 +32,18 @@ Bullet = Class.create(Sprite, // extend the sprite class
     onenterframe: function() {
          if (this.within(this.target, 50)) {
 			//console.log("before " + this.target.health);
-			this.target.health = this.target.health - this.damage;
+			
+			
+			
+			
 			//console.log("after " + this.target.health);
 			
 			if (this.bType == 1)
 			   this.target.isSlowed = true;
 		    else if (this.bType == 2)
 			   this.explosiveAttack(); 
-			
+			else if (this.bType == 0 )
+			   this.target.health = this.target.health - this.damage;
 			
 			
 			if (this.target.health == 0) {
@@ -56,7 +61,18 @@ Bullet = Class.create(Sprite, // extend the sprite class
 		 
 	},
 	explosiveAttack: function() {
-	     // attack everything within range.
+		for (var i = 0; i < enemies.length; i++) {
+		   if (this.within(enemies[i], this.explosiveRange)) {
+		      enemies[i].health = enemies[i].health - this.damage
+			  console.log("boom");
+			  if (enemies[i].health == 0) {
+			     this.target.remove();
+				 // the enemy remove function removes from the scene.
+			  }
+		   }		   
+		 
+		 }
+		 
 	
 	},
 });
