@@ -24,7 +24,7 @@ Enemy = Class.create(Sprite,
                 this.image = game.assets['images/enm_sml.png'];
                 this.moveSpeed = 4;
                 this.health = 15;
-				this.bounty = 10;
+				this.bounty = 5;
                 this.maxHealth = this.health;
 				this.numFrames = 4;
 				this.frameRate = 2;
@@ -35,7 +35,7 @@ Enemy = Class.create(Sprite,
                 this.health = 30;
                 this.maxHealth = this.health;
 				this.numFrames = 8;
-				this.bounty = 15;
+				this.bounty = 10;
 				this.frameRate = 3;
 		}
 		else if (enemyType == 2) { //lrg enemy
@@ -44,7 +44,7 @@ Enemy = Class.create(Sprite,
                 this.health = 100;
                 this.maxHealth = this.health;
 				this.numFrames = 4;
-				this.bounty = 20;
+				this.bounty = 15;
 				this.frameRate = 8;
         }
 		else if (enemyType == 4) { //Boss enemy, not yet implemented

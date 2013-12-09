@@ -58,7 +58,7 @@ GunTower = Class.create(Tower, {
       this.image = game.assets['images/tower_gun.png'];
 	   this.bType = 0; 
       this.cost = 50;
-      this.rate = 50;
+      this.rate = 75;
       this.damage = 10;
       this.range = 200;
    }
