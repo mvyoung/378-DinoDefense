@@ -196,7 +196,8 @@ window.onload = function() {
 	   'images/tower_freeze.png',
 	   'images/tower_explosive.png',
       'images/tower_menu.png',
-	  'images/explosion.png' 
+	  'images/explosion.png',
+	  'images/effect0.png'
    );
 
    game.onload = function() {
