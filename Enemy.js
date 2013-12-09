@@ -14,8 +14,7 @@ Enemy = Class.create(Sprite, // extend the sprite class
         this.x = this.gridX * gridPx;
         this.y = this.gridY * gridPx;
         this.key = 0;
-        
-                
+               
         if (enemyType == 0) {
                 this.image = game.assets['images/grid.png'];
                 this.movespeed = 2;
@@ -29,6 +28,7 @@ Enemy = Class.create(Sprite, // extend the sprite class
     remove: function() {
         this.healthBar.remove();
         game.currentScene.removeChild(this);
+        money += 10;
         delete enemies [this.key]; //TODO: handle this
         delete this;
     },
@@ -84,6 +84,7 @@ Enemy = Class.create(Sprite, // extend the sprite class
         
         if (this.x > 840) {
             this.remove();
+            citizens--;
         }
     },
 });

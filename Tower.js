@@ -4,6 +4,8 @@ Tower = Class.create(Sprite, {
       this.cost = 0;
 	  this.hasShot = false;
 	  this.lastShot = 0;
+     this.show_radius = 0;
+     this.radius = null;
    },
    
    onenterframe: function() {
@@ -16,6 +18,11 @@ Tower = Class.create(Sprite, {
          this.scene.removeChild(this);
          remove = 0;
          money += this.cost / 2;
+      } else if (this.show_radius === 0) {
+         this.show_radius = 1;
+         this.radius = new Sprite(this.range, this.range);
+         this.radius.context.beginPath();
+         this.radius.context.arc(radius / 2, radius / 2, 0, Math.PI * 2, true);
       }
    },
    
@@ -50,7 +57,7 @@ Tower = Class.create(Sprite, {
 GunTower = Class.create(Tower, {
    initialize: function() {
       Tower.call(this);
-      this.image = game.assets['images/tower_gun.gif'];
+      this.image = game.assets['images/tower_gun.png'];
 	   this.bType = 0; 
       this.cost = 10;
       this.rate = 100;
@@ -62,7 +69,7 @@ GunTower = Class.create(Tower, {
 FreezeTower = Class.create(Tower, {
    initialize: function() {
       Tower.call(this);
-      this.image = game.assets['images/tower_freeze.gif'];
+      this.image = game.assets['images/tower_freeze.png'];
 	   this.bType = 1; 
       this.cost = 10;
       this.rate = 100;
@@ -75,7 +82,7 @@ FreezeTower = Class.create(Tower, {
 ExplosiveTower = Class.create(Tower, {
    initialize: function() {
       Tower.call(this);
-      this.image = game.assets['images/tower_explosive.gif'];
+      this.image = game.assets['images/tower_explosive.png'];
 	   this.bType = 2; 
       this.cost = 10;
       this.rate = 100;

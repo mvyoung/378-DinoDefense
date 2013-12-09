@@ -34,6 +34,10 @@ window.onload = function() {
    game = new Game(800, 1000);
 
    game.preload(
+      'sounds/adventure.wav',
+      'images/title.png',
+      'images/play.png',
+      'images/main_screen.png',
       'images/grid.png',
       'images/toolbar.png',
       'images/remove.png',
@@ -42,9 +46,9 @@ window.onload = function() {
  	   'images/bullet.png',
       'images/health_green.png',
       'images/health_red.png',
-	   'images/tower_gun.gif',
-	   'images/tower_freeze.gif',
-	   'images/tower_explosive.gif',
+	   'images/tower_gun.png',
+	   'images/tower_freeze.png',
+	   'images/tower_explosive.png',
       'images/tower_menu.png'
    );
 
@@ -96,7 +100,9 @@ window.onload = function() {
       var grid = new Grid(map1, col1);
       var tower = new GunTower();
       var stage = new Stage(grid);
+      var start = new Start();
       game.pushScene(stage);
+      game.pushScene(start);
    };
 
    game.start();
