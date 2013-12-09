@@ -10,7 +10,7 @@ this.selection = 0;
 this.remove = 0;
 
 // don't let them die
-this.citizens = 1;
+this.citizens = 20;
 
 // $$
 var money = 50;
