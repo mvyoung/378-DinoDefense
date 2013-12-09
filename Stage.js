@@ -7,7 +7,7 @@ Stage = Class.create(Scene, {
       this.toolbar = new Toolbar(800, 200, 0, 800);
       
       //Spawning vars
-      this.frameDelay = 0;
+      this.frameDelay = 450;
       this.numWaves = numWaves;
       this.curWave = 0;
       this.enemyTypes = enemyTypes;
@@ -26,6 +26,9 @@ Stage = Class.create(Scene, {
         
         if (this.frameDelay > 0) {
             this.frameDelay--;
+            if (this.frameDelay == 1) {
+                console.log("Launching Wave "+this.curWave);
+            }
         } else if (this.curEnemyInWave < this.numEnemiesPerWave[this.curWave]) {
             //Need to Spawn Enemies
             if ((this.age % 30) == 0) {
@@ -44,8 +47,10 @@ Stage = Class.create(Scene, {
             // Check for end of wave
             if (this.curWave == this.numWaves) {
                 // End the game
+                console.log("You Win!");
             } else {
                 this.frameDelay = 450;
+                console.log("Wave "+(this.curWave-1)+"Over");
             }
         }
     
