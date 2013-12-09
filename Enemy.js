@@ -3,7 +3,7 @@ Enemy = Class.create(Sprite,
     initialize: function(gx, gy, enemyType) { 
         Sprite.call(this, 40, 40); 
         this.frame = 0;
-
+	    this.slowTimer = 0; 
         this.moveSpeed = 2; 
         this.isSlowed = false;
                 
@@ -56,6 +56,12 @@ Enemy = Class.create(Sprite,
         this.healthBar = new Health(this);
         game.currentScene.addChild(this);
     },
+	freeze : function(time) {
+	   this.isSlowed = true;
+	   this.slowTimer = time;
+	
+	
+	}, 
     takeDamage: function(dmg) {
         this.health -= dmg;
         if (this.health <= 0) {
@@ -71,7 +77,12 @@ Enemy = Class.create(Sprite,
     },
     //define the enterframe event listener
     onenterframe: function() {
-        
+        if (this.isSlowed) {
+		   this.slowTimer -= 1; 
+		   if (this.slowTimer == 0){
+		      this.isSlowed = false;
+		   }
+		}
 		//Animate
 		if( (this.age % this.frameRate) == 0)
 			if( this.frame == (this.numFrames-1) )

@@ -27,7 +27,12 @@ Tower = Class.create(Sprite, {
    },
    
    shootAtClosest: function() {
-		var target = this.scan();
+		var target;
+		var count = 0; 
+		while ((target = this.scan()) && this.bType == 1 && target.isSlowed && count < enemies.length) {
+			target = this.scan();
+			count++;
+	    }               
 		// has shot used for first shot, too lazy to think atm.
 		if ((target != 0 && (this.age - this.lastShot) > this.rate) || !this.hasShot) {
 		  // console.log("shooting at " + target.x + " " + target.y);
@@ -75,7 +80,8 @@ FreezeTower = Class.create(Tower, {
       this.rate = 100;
       this.damage = 10;
       this.range = 5;
-	   this.bType = 1; 
+	   this.bType = 1;
+
    }
 });
 

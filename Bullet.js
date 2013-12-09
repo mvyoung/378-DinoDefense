@@ -15,12 +15,15 @@ Bullet = Class.create(Sprite, // extend the sprite class
         
 		if (this.bType == 0) 
 			this.image = game.assets['images/bullet.png']; //load image asset
-        else if (this.bType == 1)
-			this.image = game.assets['images/bullet.png']; //load image asset
+        else if (this.bType == 1) {
+			this.image = game.assets['images/ice_shot.png']; //load image asset
+	        this.width = 20;
+			this.height = 22;
+		}
 		else if (this.bType == 2)
 			this.image = game.assets['images/bullet.png']; //load image asset
 		
-		this.tl.moveTo(this.tX, this.tY, 20);
+		this.tl.moveTo(this.tX, this.tY, 15);
 		
 		game.currentScene.addChild(this);
 		
@@ -30,7 +33,7 @@ Bullet = Class.create(Sprite, // extend the sprite class
 	// if the target is not in the same, or gets destoryed, then remove this bullet
     //define the enterframe event listener
     onenterframe: function() {
-         if (this.within(this.target, 50)) {
+         if (this.within(this.target, 75)) {
 			//console.log("before " + this.target.health);
 			
 			
@@ -39,7 +42,7 @@ Bullet = Class.create(Sprite, // extend the sprite class
 			//console.log("after " + this.target.health);
 			
 			if (this.bType == 1)
-			   this.target.isSlowed = true;
+			   this.target.freeze(100);
 		    else if (this.bType == 2)
 			   this.explosiveAttack(); 
 			else if (this.bType == 0 )
