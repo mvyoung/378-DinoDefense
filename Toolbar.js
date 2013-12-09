@@ -13,12 +13,27 @@ Toolbar = Class.create(Sprite, {
       this.remove = new Remove(this.x + 20, this.y + 100);
       this.citizenCount = new Citizens(this.x + 20, this.y + 20);
       this.moneyAmount = new Money(this.x + 20, this.y + 50);
+      this.wave = new Wave(this.x + 20, this.y + 160);
       this.scene.addChild(this.citizenCount);
       this.scene.addChild(this.moneyAmount);
+      this.scene.addChild(this.wave);
       this.scene.addChild(this.remove);
       this.scene.addChild(this.tower1);
       this.scene.addChild(this.tower2);
       this.scene.addChild(this.tower3);
+   }
+});
+
+Wave = Class.create(Label, {
+   initialize: function(x, y) {
+      Label.call(this, 150, 50);
+      this.x = x;
+      this.y = y;
+      this.font = '30px normal';
+   },
+
+   onenterframe: function() {
+      this.text = "Wave " + game.currentScene.curWave + " / " + game.currentScene.numWaves;
    }
 });
 
