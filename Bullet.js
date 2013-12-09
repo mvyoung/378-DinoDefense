@@ -64,7 +64,8 @@ Bullet = Class.create(Sprite, // extend the sprite class
 		for (var i = 0; i < enemies.length; i++) {
 		   if (typeof enemies[i] != 'undefined' && this.within(enemies[i], this.explosiveRange)) {
 		      enemies[i].health = enemies[i].health - this.damage
-			  console.log("boom");
+			  new Explosion(this.x, this.y);
+		
 			  if (enemies[i].health == 0) {
 			     this.target.remove();
 				 // the enemy remove function removes from the scene.
@@ -75,4 +76,31 @@ Bullet = Class.create(Sprite, // extend the sprite class
 		 
 	
 	},
+});
+
+Explosion = Class.create(Sprite, 
+{
+	initialize: function(x, y) {
+	 Sprite.call(this, 40, 40);
+	 this.x = x, 
+	 this.y = y;
+	 this.frame =  0;
+	 this.image = game.assets['images/explosion.png'];
+	 game.currentScene.addChild(this);
+	},
+	
+	onenterframe: function() {
+     
+	     this.frame++; 
+		 
+		 if (this.frame == 35) {
+		    game.currentScene.removeChild(this);
+			delete this;
+		 }
+	  
+    }	
+
+
+
+
 });
