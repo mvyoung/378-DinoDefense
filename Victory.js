@@ -13,7 +13,7 @@ Victory = Class.create(Sprite, {
    initialize: function() {
       Sprite.call(this, 615, 167);
       this.image = game.assets['images/victory.png'];
-      this.x = 200;
+      this.x = 50;
       this.y = 400;
    }
 });
@@ -21,7 +21,6 @@ Victory = Class.create(Sprite, {
 Dim = Class.create(Sprite, {
    initialize: function() {
       Sprite.call(this, 800, 1000);
-      this.image = game.assets['images/transparent.png'];
-      this.opacity = 8;
+      this.image = game.assets['images/victory_dim.png'];
    }
 });
