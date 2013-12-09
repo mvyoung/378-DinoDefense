@@ -14,7 +14,7 @@ Enemy = Class.create(Sprite, // extend the sprite class
         this.gridYTarget = gy;
         this.x = this.gridX * gridPx;
         this.y = this.gridY * gridPx;
-        this.healthBar = new Health(this.x + 5, this.y - 10);
+        this.healthBar = new Health(this);
         this.key = 0;
         
                 
@@ -89,15 +89,20 @@ Enemy = Class.create(Sprite, // extend the sprite class
 });
 
 Health = Class.create(Sprite, {
-    initialize: function(x, y) {
+    initialize: function(parent) {
         Sprite.call(this, 30, 5);
-        this.x = x;
-        this.y = y;
+        this.parent = parent;
+        this.x = parent.x + 5;
+        this.y = parent.y - 10;
         this.image = game.assets['images/health_green.png'];
         game.currentScene.addChild(this);
     },
 
     onenterframe: function() {
+        this.x = this.parent.x + 5;
+        this.y = this.parent.y - 10;
+        console.log("Health Location - x: "+this.x+"  y: "+this.y);
+    
         if (this.width < 10) {
             this.image = game.assets['images/health_red.png'];
         }
