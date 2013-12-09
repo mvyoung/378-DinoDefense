@@ -62,7 +62,7 @@ Bullet = Class.create(Sprite, // extend the sprite class
 	},
 	explosiveAttack: function() {
 		for (var i = 0; i < enemies.length; i++) {
-		   if (this.within(enemies[i], this.explosiveRange)) {
+		   if (typeof enemies[i] != 'undefined' && this.within(enemies[i], this.explosiveRange)) {
 		      enemies[i].health = enemies[i].health - this.damage
 			  console.log("boom");
 			  if (enemies[i].health == 0) {

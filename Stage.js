@@ -20,9 +20,9 @@ Stage = Class.create(Scene, {
 	   if ((this.age % 75) == 0) {
            for (i = 0; i < 1; i++) {
 		      var d = new Enemy(-1, 9, eType);
-              d.key = i;
+              d.key = enemyCount++;
 		      //this.addChild(d);
-			  enemies[i] = d;
+			  enemies[d.key] = d;
 		   }
 		}
 	}
