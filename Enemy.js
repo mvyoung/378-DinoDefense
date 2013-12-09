@@ -48,14 +48,14 @@ Enemy = Class.create(Sprite,
 				this.frameRate = 8;
         }
 		else if (enemyType == 4) { //Boss enemy, not yet implemented
-				this.image = game.assets['images/grid.png'];
+				this.image = game.assets['images/boss120.png'];
                 this.moveSpeed = 1;
                 this.health = 500;
 				this.bounty = 50;
                 this.maxHealth = this.health;
-				this.numFrames = 0;
-				this.frame = 1;
-				this.frameRate = 0;
+				this.numFrames = 8;
+				
+				this.frameRate = 12;
 		}
 		
         this.healthBar = new Health(this);

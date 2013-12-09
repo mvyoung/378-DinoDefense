@@ -201,7 +201,8 @@ window.onload = function() {
 	  'images/ice_shot.png',
      'images/victory.png',
      'images/victory_dim.png',
-     'images/gameover.png'
+     'images/gameover.png',
+	 'images/boss120.png'
    );
 
    game.onload = function() {

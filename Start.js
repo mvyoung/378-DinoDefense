@@ -88,7 +88,7 @@ Play_Hard = Class.create(Sprite, {
     game.popScene();
     
     //Spawner Settings
-    var enemyTypes = [1, 0, 2, 1, 0, 2, 1, 4];
+    var enemyTypes = [4, 0, 2, 1, 0, 2, 1, 4];
     var numWaves = 5;
     var numEnemiesPerWave = [10, 15, 10, 15, 20, 15, 25, 1];
     money = 150;
