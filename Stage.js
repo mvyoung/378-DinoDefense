@@ -10,9 +10,11 @@ Stage = Class.create(Scene, {
    },
    
    onenterframe: function() {
-	   if (this.age == 10) {
+	   var eType = Math.floor((Math.random()*3)); //generate random number [0,2]
+	    //need  way to generate enemies at random intervals
+	   if ((this.age % 75) == 0) {
            for (i = 0; i < 1; i++) {
-		      var d = new Enemy(-1, 9, 0);
+		      var d = new Enemy(-1, 9, eType);
               d.key = i;
 		      //this.addChild(d);
 			  enemies[i] = d;

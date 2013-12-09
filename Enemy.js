@@ -2,9 +2,9 @@ Enemy = Class.create(Sprite, // extend the sprite class
 {
     initialize: function(gx, gy, enemyType) { //initialization
         Sprite.call(this, 40, 40); //initialize the sprite object
-        this.frame = 1;
+        this.frame = 0;
         //this.image = game.assets['chara1.png']; //load image asset
-        this.moveSpeed = 2;
+        this.moveSpeed = 2; 
         this.isSlowed = false;
                 
         this.gridX = gx;
@@ -15,14 +15,43 @@ Enemy = Class.create(Sprite, // extend the sprite class
         this.y = this.gridY * gridPx;
         this.key = 0;
         
-                
-        if (enemyType == 0) {
-                this.image = game.assets['images/grid.png'];
-                this.movespeed = 2;
+		this.numFrames = 4;
+		this.frameRate = 2;
+		             
+       
+		if (enemyType == 0) { //sml enemy
+                this.image = game.assets['images/enm_sml.png'];
+                this.moveSpeed = 6;
+                this.health = 15;
+                this.maxHealth = this.health;
+				this.numFrames = 4;
+				this.frameRate = 2;
+        }
+		else if (enemyType == 1) { //med enemy
+				this.image = game.assets['images/enm_med.png'];
+                this.moveSpeed = 4;
                 this.health = 30;
                 this.maxHealth = this.health;
+				this.numFrames = 8;
+				this.frameRate = 3;
+		}
+		else if (enemyType == 2) { //lrg enemy
+				this.image = game.assets['images/enm_lrg.png'];
+                this.moveSpeed = 2;
+                this.health = 100;
+                this.maxHealth = this.health;
+				this.numFrames = 4;
+				this.frameRate = 8;
         }
-        
+		else if (enemyType == 4) { //Boss enemy, not yet implemented
+				this.image = game.assets['images/enm_lrg.png'];
+                this.moveSpeed = 1;
+                this.health = 500;
+                this.maxHealth = this.health;
+				this.numFrames = 4;
+				this.frameRate = 12;
+		}
+		
         this.healthBar = new Health(this);
         game.currentScene.addChild(this);
     },
@@ -34,7 +63,15 @@ Enemy = Class.create(Sprite, // extend the sprite class
     },
     //define the enterframe event listener
     onenterframe: function() {
-        //Move
+        //animate
+		
+		if( (this.age % this.frameRate) == 0)
+			if( this.frame == (this.numFrames-1) )
+				this.frame = 0;
+			else
+				this.frame++;
+				
+		//Move
 		if (this.isSlowed) {
 			this.x += (this.moveSpeed/2) * (this.gridXTarget - this.gridX);
             this.y += (this.moveSpeed/2) * (this.gridYTarget - this.gridY);
@@ -82,7 +119,8 @@ Enemy = Class.create(Sprite, // extend the sprite class
             }
         }
         
-        if (this.x > 840) {
+        if (this.x > 840) { //dino made it through path
+			//CALL function to decrement number of citizens
             this.remove();
         }
     },

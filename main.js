@@ -45,7 +45,10 @@ window.onload = function() {
 	   'images/tower_gun.gif',
 	   'images/tower_freeze.gif',
 	   'images/tower_explosive.gif',
-      'images/tower_menu.png'
+      'images/tower_menu.png',
+	  'images/enm_lrg.png',
+	  'images/enm_med.png',
+	  'images/enm_sml.png'
    );
 
    game.onload = function() {
