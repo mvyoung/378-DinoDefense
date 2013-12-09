@@ -27,7 +27,7 @@ Game_title = Class.create(Sprite, {
   initialize: function(x, y) {
     Sprite.call(this, x, y);
     this.image = game.assets['images/title.png'];
-    this.x = 290;
+    this.x = 222;
     this.y = 50;
   }
 });
@@ -36,8 +36,8 @@ Play_Easy = Class.create(Sprite, {
   initialize: function(x, y) {
     Sprite.call(this, x, y);
     this.image = game.assets['images/level_easy.png'];
-    this.x = 350;
-    this.y = 300;
+    this.x = 50;
+    this.y = 290;
   },
 
   ontouchend: function() {
@@ -58,8 +58,8 @@ Play_Medium = Class.create(Sprite, {
   initialize: function(x, y) {
     Sprite.call(this, x, y);
     this.image = game.assets['images/level_medium.png'];
-    this.x = 350;
-    this.y = 400;
+    this.x = 300;
+    this.y = 290;
   },
 
   ontouchend: function() {
@@ -80,8 +80,8 @@ Play_Hard = Class.create(Sprite, {
   initialize: function(x, y) {
     Sprite.call(this, x, y);
     this.image = game.assets['images/level_hard.png'];
-    this.x = 350;
-    this.y = 500;
+    this.x = 550;
+    this.y = 290;
   },
 
   ontouchend: function() {
