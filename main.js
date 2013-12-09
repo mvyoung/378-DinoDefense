@@ -202,7 +202,8 @@ window.onload = function() {
      'images/victory.png',
      'images/victory_dim.png',
      'images/gameover.png',
-	 'images/boss120.png'
+	 'images/boss120.png',
+	 'sounds/gunFire.mp3'
    );
 
    game.onload = function() {

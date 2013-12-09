@@ -3,7 +3,8 @@ Bullet = Class.create(Sprite, // extend the sprite class
     initialize: function(x, y, target, damage, bType) { //initialization
 	    
 		console.log(target.x+ "  " + target.y);
-		   
+		this.bgm = game.assets['sounds/gunFire.mp3'];
+        this.bgm.play();   
 		Sprite.call(this, 10, 9); //initialize the sprite object
 		//console.log("adding bullet at " + x + "  "+ y); 
 		this.frame = 0;
