@@ -10,7 +10,7 @@ this.selection = 0;
 this.remove = 0;
 
 // don't let them die
-this.citizens = 20;
+this.citizens = 1;
 
 // $$
 this.money = 50;
@@ -198,7 +198,8 @@ window.onload = function() {
       'images/tower_menu.png',
 	  'images/explosion.png',
 	  'images/effect0.png',
-	  'images/ice_shot.png'
+	  'images/ice_shot.png',
+     'images/victory.png'
    );
 
    game.onload = function() {

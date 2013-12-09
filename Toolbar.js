@@ -53,7 +53,8 @@ Citizens = Class.create(Label, {
    onenterframe: function() {
       this.text = "Citizens: " + citizens;
       if (citizens === 0) {
-         console.log("GAMEOVER");
+        console.log("GAMEOVER");
+        game.stop();
       }
    }
 });
