@@ -38,6 +38,7 @@ Play_Easy = Class.create(Sprite, {
     this.image = game.assets['images/level_easy.png'];
     this.x = 50;
     this.y = 290;
+	money = 350;
   },
 
   ontouchend: function() {
@@ -60,6 +61,7 @@ Play_Medium = Class.create(Sprite, {
     this.image = game.assets['images/level_medium.png'];
     this.x = 300;
     this.y = 290;
+	money = 250;
   },
 
   ontouchend: function() {
