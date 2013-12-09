@@ -42,9 +42,14 @@ Play_Easy = Class.create(Sprite, {
 
   ontouchend: function() {
     game.popScene();
+    
+    //Spawner Settings
+    var enemyTypes = [1, 1, 2, 0, 1];
+    var numWaves = 5;
+    var numEnemiesPerWave = [5, 7, 5, 7, 10];
 
     var easy_map = new Grid(easy, easy_col);
-    var stage = new Stage(easy_map);
+    var stage = new Stage(easy_map, enemyTypes, numWaves, numEnemiesPerWave);
     game.pushScene(stage);
   }
 });
@@ -59,10 +64,15 @@ Play_Medium = Class.create(Sprite, {
 
   ontouchend: function() {
     game.popScene();
+    
+    //Spawner Settings
+    var enemyTypes = [1, 1, 2, 0, 1];
+    var numWaves = 5;
+    var numEnemiesPerWave = [5, 7, 5, 7, 10];
 
     var medium_map = new Grid(medium, medium_col);
     var stage = new Stage(medium_map);
-    game.pushScene(stage);
+    game.pushScene(stage, enemyTypes, numWaves, numEnemiesPerWave);
   }
 });
 
@@ -76,9 +86,14 @@ Play_Hard = Class.create(Sprite, {
 
   ontouchend: function() {
     game.popScene();
+    
+    //Spawner Settings
+    var enemyTypes = [1, 1, 2, 0, 1];
+    var numWaves = 5;
+    var numEnemiesPerWave = [5, 7, 5, 7, 10];
 
     var hard_map = new Grid(hard, hard_col);
     var stage = new Stage(hard_map);
-    game.pushScene(stage);
+    game.pushScene(stage, enemyTypes, numWaves, numEnemiesPerWave);
   }
 });
