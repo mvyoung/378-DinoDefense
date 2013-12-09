@@ -42,7 +42,10 @@ window.onload = function() {
 	  'images/chara1.png',
 	  'images/bullet.png',
      'images/health_green.png',
-     'images/health_red.png'
+     'images/health_red.png',
+	 'images/tower_gun.gif',
+	 'images/tower_freeze.gif',
+	 'images/tower_explosive.gif'
    );
 
    game.onload = function() {
