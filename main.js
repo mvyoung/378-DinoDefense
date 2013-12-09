@@ -200,7 +200,8 @@ window.onload = function() {
 	  'images/effect0.png',
 	  'images/ice_shot.png',
      'images/victory.png',
-     'images/victory_dim.png'
+     'images/victory_dim.png',
+     'images/gameover.png'
    );
 
    game.onload = function() {

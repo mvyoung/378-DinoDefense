@@ -69,6 +69,7 @@ Citizens = Class.create(Label, {
       this.text = "Citizens: " + citizens;
       if (citizens === 0) {
         console.log("GAMEOVER");
+        var lose = new Gameover();
         game.stop();
       }
    }
