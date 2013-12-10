@@ -38,7 +38,7 @@ Play_Easy = Class.create(Sprite, {
     this.image = game.assets['images/level_easy.png'];
     this.x = 50;
     this.y = 275;
-	money = 350;
+	money = 400;
   },
 
   ontouchend: function() {
@@ -47,7 +47,7 @@ Play_Easy = Class.create(Sprite, {
     //Spawner Settings
     var enemyTypes = [1, 0, 2, 1, 0, 2, 1, 4];
     var numWaves = 5;
-    var numEnemiesPerWave = [10, 15, 10, 15, 20, 15, 25, 1];
+    var numEnemiesPerWave = [5, 10, 8, 8, 15, 10, 15, 1];
 
     var easy_map = new Grid(easy, easy_col);
     var stage = new Stage(easy_map, enemyTypes, numWaves, numEnemiesPerWave);
@@ -61,7 +61,7 @@ Play_Medium = Class.create(Sprite, {
     this.image = game.assets['images/level_medium.png'];
     this.x = 300;
     this.y = 275;
-	money = 250;
+	money = 350;
   },
 
   ontouchend: function() {
@@ -70,7 +70,7 @@ Play_Medium = Class.create(Sprite, {
     //Spawner Settings
     var enemyTypes = [1, 0, 2, 1, 0, 2, 1, 4];
     var numWaves = 5;
-    var numEnemiesPerWave = [12, 17, 10, 15, 20, 20, 25, 1];
+    var numEnemiesPerWave = [15, 12, 8, 8, 15, 15, 20, 1];
 
     var medium_map = new Grid(medium, medium_col);
     var stage = new Stage(medium_map, enemyTypes, numWaves, numEnemiesPerWave);
@@ -92,8 +92,8 @@ Play_Hard = Class.create(Sprite, {
     //Spawner Settings
     var enemyTypes = [1, 0, 2, 1, 0, 2, 1, 4];
     var numWaves = 5;
-    var numEnemiesPerWave = [15, 20, 13, 18, 25, 25, 35, 2];
-    money = 150;
+    var numEnemiesPerWave = [10, 15, 10, 15, 20, 15, 25, 2];
+    money = 250;
     var hard_map = new Grid(hard, hard_col);
     var stage = new Stage(hard_map, enemyTypes, numWaves, numEnemiesPerWave);
     game.pushScene(stage);
